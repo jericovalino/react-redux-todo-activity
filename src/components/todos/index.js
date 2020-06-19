@@ -1,16 +1,18 @@
 import React from 'react';
 import style from './style.module.css'
+import { useSelector } from 'react-redux';
 
 import Item from '../item';
 
-const TodoItems = () => {
+const Todos = () => {
+
+    const todos = useSelector(state => state)
+
     return (
         <div className={style.todoItems}>
-            <Item />
-            <Item />
-            <Item />
+            {todos.map((item, i) => <Item key={i}>{item}</Item>) }
         </div>
     )
 }
 
-export default TodoItems;
+export default Todos;

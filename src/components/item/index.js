@@ -1,10 +1,10 @@
 import React from 'react';
 import style from './style.module.css';
 
-const Item = () => {
+const Item = (props) => {
     return (
         <div className={style.item}>
-            <span> a quick brown fox jumps over... </span>
+            <span>{props.children}</span>
             <div>
                 <button className={style.editBtn}>edit</button>
                 <button className={style.deleteBtn}>delete</button>
