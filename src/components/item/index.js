@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './style.module.css';
 import { useDispatch } from 'react-redux';
 
 const Item = (props) => {
 
+    const [showEdit, setShowEdit] = useState(false);
+    const [editValue, setEditValue] = useState(props.children);
     const dispatch = useDispatch();
 
     const deleteTodoHandler = () => {
@@ -14,19 +16,31 @@ const Item = (props) => {
     }
 
     const editTodoHandler = () => {
-        dispatch({
-            type: 'EDIT_TODO',
-            id: props.id
-        })
+        if (!showEdit) {
+            setShowEdit(!showEdit);
+        } else {
+            dispatch({
+                type: 'EDIT_TODO',
+                id: props.id,
+                data: editValue
+            });
+            setShowEdit(false);
+        }
+    }
+
+    const editInputHandler = (e) => {
+        setEditValue(e.target.value);
     }
 
     return (
         <div className={style.item}>
-            <span>{props.children}</span>
+            <span>
+                {showEdit ? (<input value={editValue} onChange={editInputHandler} />) : props.children}
+            </span>
             <div>
-                <button className={style.editBtn} 
-                    onClick={editTodoHandler}>edit</button>
-                <button className={style.deleteBtn} 
+                <button className={style.editBtn}
+                    onClick={editTodoHandler}>{showEdit ? 'save' : 'edit'}</button>
+                <button className={style.deleteBtn}
                     onClick={deleteTodoHandler}>delete</button>
             </div>
         </div>
