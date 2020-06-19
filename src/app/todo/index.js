@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import style from './style.module.css'
+import randomID from '../../utils/randomId';
 import { useDispatch } from 'react-redux';
 
 import Todos from '../../components/todos';
@@ -13,7 +14,7 @@ const Todo = () => {
     }
 
     const addTodoHandler = () => {
-        addTodo({ type: 'ADD_TODO', data: inputValue });
+        addTodo({ type: 'ADD_TODO', data: inputValue, id: randomID()});
         setInputvalue("");
     }
 

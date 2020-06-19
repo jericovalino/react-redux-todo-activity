@@ -7,7 +7,6 @@ const Item = (props) => {
     const dispatch = useDispatch();
 
     const deleteTodoHandler = () => {
-        console.log(props.id)
         dispatch({
             type: 'DELETE_TODO',
             id: props.id

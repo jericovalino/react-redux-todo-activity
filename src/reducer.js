@@ -1,14 +1,15 @@
-const initState = [];
+const initState = [
+    {data: "test", id: 123}
+];
 
 const todoReducer = (state = initState, action) => {
     if (action.type === 'ADD_TODO') {
-        state = [...state, action.data];
+        state = [...state, {data: action.data, id: action.id}];
         return state;
     }
     else if (action.type === 'DELETE_TODO') {
-        let val = [...state];
-        val.splice(action.id, 1);
-        return val;
+        state = state.filter(item => item.id !== action.id );
+        return state;
     }
     else {
         return state;
