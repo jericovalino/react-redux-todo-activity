@@ -10,9 +10,9 @@ const Todos = () => {
 
     return (
         <div className={style.todoItems}>
-            {todos.length === 0  ? 
-            (<p>Hooray!!! You have nothing to do..</p>):
-            todos.map(item => <Item key={item.id} id={item.id}>{item.data}</Item>) }
+            {todos.length === 0 ?
+                (<p>Hooray!!! You have nothing to do..</p>) :
+                todos.map(item => <Item key={item.id} id={item.id}>{item.data}</Item>)}
         </div>
     )
 }

@@ -9,7 +9,7 @@ const Item = (props) => {
     const dispatch = useDispatch();
 
     const deleteTodoHandler = () => {
-        if(showEdit) setShowEdit(false);
+        if (showEdit) setShowEdit(false);
         dispatch({
             type: 'DELETE_TODO',
             id: props.id
@@ -36,13 +36,16 @@ const Item = (props) => {
     return (
         <div className={style.item}>
             <span>
-                {showEdit ? (<input value={editValue} onChange={editInputHandler} />) : props.children}
-                {props.id}
+                {showEdit ?
+                    (<input value={editValue} onChange={editInputHandler} />) :
+                    props.children}
             </span>
             <div>
-                <button className={style.editBtn}
+                <button
+                    className={style.editBtn}
                     onClick={editTodoHandler}>{showEdit ? 'save' : 'edit'}</button>
-                <button className={style.deleteBtn}
+                <button
+                    className={style.deleteBtn}
                     onClick={deleteTodoHandler}>delete</button>
             </div>
         </div>

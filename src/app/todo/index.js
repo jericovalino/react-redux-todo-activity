@@ -14,8 +14,12 @@ const Todo = () => {
     }
 
     const addTodoHandler = () => {
-        addTodo({ type: 'ADD_TODO', data: inputValue, id: randomID()});
-        setInputvalue("");
+        if (inputValue) {
+            addTodo({ type: 'ADD_TODO', data: inputValue, id: randomID() });
+            setInputvalue("");
+        } else {
+            alert("enter something!");
+        }
     }
 
     return (
@@ -27,7 +31,10 @@ const Todo = () => {
             <Todos />
 
             <div className={style.add}>
-                <input placeholder=" add todo" value={inputValue} onChange={inputHandler} />
+                <input
+                    placeholder=" add todo"
+                    value={inputValue}
+                    onChange={inputHandler} />
                 <button
                     className={style.addBtn}
                     onClick={addTodoHandler}>

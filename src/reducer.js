@@ -2,23 +2,23 @@ const initState = [];
 
 const todoReducer = (state = initState, action) => {
     if (action.type === 'ADD_TODO') {
-        state = [...state, {data: action.data, id: action.id}];
+        state = [...state, { data: action.data, id: action.id }];
         return state;
     }
     else if (action.type === 'DELETE_TODO') {
-        state = state.filter(item => item.id !== action.id );
+        state = state.filter(item => item.id !== action.id);
         return state;
     }
     else if (action.type === 'EDIT_TODO') {
         let newVal = [...state];
         state = newVal.map(todo => {
-            if(todo.id === action.id){
-                return {...todo, data: action.data}
-            }else{
+            if (todo.id === action.id) {
+                return { ...todo, data: action.data }
+            } else {
                 return todo
             }
         })
-        return newVal;
+        return state;
     }
     else {
         return state;
