@@ -9,6 +9,7 @@ const Item = (props) => {
     const dispatch = useDispatch();
 
     const deleteTodoHandler = () => {
+        if(showEdit) setShowEdit(false);
         dispatch({
             type: 'DELETE_TODO',
             id: props.id
@@ -36,6 +37,7 @@ const Item = (props) => {
         <div className={style.item}>
             <span>
                 {showEdit ? (<input value={editValue} onChange={editInputHandler} />) : props.children}
+                {props.id}
             </span>
             <div>
                 <button className={style.editBtn}

@@ -12,7 +12,7 @@ const Todos = () => {
         <div className={style.todoItems}>
             {todos.length === 0  ? 
             (<p>Hooray!!! You have nothing to do..</p>):
-            todos.map((item, i) => <Item key={i} id={item.id}>{item.data}</Item>) }
+            todos.map(item => <Item key={item.id} id={item.id}>{item.data}</Item>) }
         </div>
     )
 }

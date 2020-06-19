@@ -10,15 +10,15 @@ const todoReducer = (state = initState, action) => {
         return state;
     }
     else if (action.type === 'EDIT_TODO') {
-        state = state.map(todo => {
+        let newVal = [...state];
+        state = newVal.map(todo => {
             if(todo.id === action.id){
-                todo.data = action.data;
-                return todo
-            }else {
+                return {...todo, data: action.data}
+            }else{
                 return todo
             }
         })
-        return state;
+        return newVal;
     }
     else {
         return state;
