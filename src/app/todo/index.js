@@ -26,8 +26,7 @@ const Todo = () => {
             <Todos />
 
             <div className={style.add}>
-                <input value={inputValue}
-                    onChange={inputHandler} />
+                <input placeholder=" add todo" value={inputValue} onChange={inputHandler} />
                 <button
                     className={style.addBtn}
                     onClick={addTodoHandler}>

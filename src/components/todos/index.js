@@ -10,7 +10,7 @@ const Todos = () => {
 
     return (
         <div className={style.todoItems}>
-            {todos.map((item, i) => <Item key={i}>{item}</Item>) }
+            {todos.map((item, i) => <Item key={i} id={i}>{item}</Item>) }
         </div>
     )
 }
